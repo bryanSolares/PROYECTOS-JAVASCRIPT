@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "laptop",
+      "price": 1599.99,
+      "description": "HP LAPTOP",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "computer",
+      "price": 2500.99,
+      "description": "LG computer",
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "keybord",
+      "price": 750,
+      "description": "keybord gaming",
+      "categoryId": 2
+    },
+    {
+      "id": 4,
+      "name": "mouse",
+      "price": 250,
+      "description": "mouse gaming",
+      "categoryId": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "computers",
+      "description": "computers, laptops, monitors, etc"
+    },
+    {
+      "id": 2,
+      "name": "mouses",
+      "description": "mouses gamings, etc"
+    }
+  ]
+}

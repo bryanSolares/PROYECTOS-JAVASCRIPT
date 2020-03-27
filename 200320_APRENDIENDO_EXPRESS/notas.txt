@@ -1,0 +1,94 @@
+Para administración de aplicaciones complejas
+Express en un framework de node.js
+Express módulo de npm
+Permite crear aplicaciones web del lado del servidor
+Express es un módulo de terceros
+Asíncrona.
+Permite compartir paradigmas
+Permite compartir las mismas bibliotecas
+Se puede implementar modelos como Websockets y WebRTC
+Se puede implementar paradigma MVC
+Con el módulo nodemon nos evitamos la tarea de estár reiniciando servidor (npm i nodemon -D)
+Secciones importantes de packaje.json  
+    dependencies: dependencias del proyecto en producciòn
+    devDependencies: dependencias de desarrollo
+Ejercutar nodemon (npx nodemon index.js) <- dependerá del alcance de la instalación
+
+NODE
+*--------------------------------
+Crear archivo index.js
+Módulo http 
+Crear servidor
+Con servidor crear eschador
+
+Buena práctica crear un archivo llamado packaje.json ( npm init -y)
+
+EXPRESS
+*--------------------------------
+Instalar express en el proyecto (npm intall express)
+Módulo express
+Ejecutar express y guardar el valor devuelto (express())
+Con el valor ejecutar método lister(puerto, callback);
+Con el valor ejecutar método get(ruta,callback);
+
+ROUTING
+*--------------------------------
+De acuerdo a lo solicitado se pueden utilizar diversos métodos
+    GET     -> devolver
+    POST    -> recibir en base de datos y devolver respuesta
+    PUT     -> recibe datos para actualizar y devolver respuesta
+    DELETE  -> recibe dato para eliminar y devuelve respuesta
+
+Al enviar los datos no solo se puede usar el método response.send()
+también se puede utilizar el método response.json() éste devuelve un objeto de 
+javascript
+
+CUERPO DE LA PETICION
+Con request.body -> se recibe la información que el cliente envia
+
+Es necesario indicar a express que debe entender cuando un cliente 
+le envia información para hacer ésto utilizar:
+    nombreconstante.use(express.json())
+
+Para crear rutas dinámicas a la ruta original colocar dos puntos y 
+el nombre de varible que recolectará el dato enviado (ruta/:nombreVariable)
+Para obtener el valor de lo que se recoge en la ruta se utiliza
+el método: request.params -> parámetro de la petición
+
+Un método más de express es app.all(ruta,(req, res){});
+Con lo anterior cada que consulten un indicio de la ruta 
+indicada siempre pasará primeramente por all y ya no continua.
+Si se desea continuar adicionar el paramentro next:
+    app.all(ruta,(req,res,next){
+        //hara algo
+        next();
+    })
+
+MIDDLEWARES
+*-----------------------------------
+Manejadores de peticiones que se ejecutan antes de llegar
+Deben de ir antes de cualquier ruta
+a una ruta original, puede ser cualquier función modo de implementación:
+app.use(nombrefuncion) ó app.user(function(){})
+
+Un middleware conocido y muy útil es morgan (npm i morgan)
+
+
+ARCHIVOS ESTATICOS
+*-----------------------------------
+Archivos que no cambian: html, css, javascript
+middleware express.static(nombredecarpeta)
+
+CONFIGURACIONES SETTINGS
+*------------------------------------
+Par claves,valor que se especifican al partir del método 
+app.set(nombreclave,valor)
+
+Un concepto importante en el que se pueden aprovechar las configuraciones
+es con un motor de plantillas:
+    (npm i ejs)
+
+Los motores de plantillas ayudan a extender el html
+
+Está tan bien relacionado con node que no es necesario requerirlo
+solo configurarlo

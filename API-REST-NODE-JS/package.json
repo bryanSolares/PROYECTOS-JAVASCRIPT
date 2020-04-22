@@ -1,11 +1,14 @@
 {
   "name": "API-REST-NODE-JS",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mi aplicación buena",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Bryan Solares",

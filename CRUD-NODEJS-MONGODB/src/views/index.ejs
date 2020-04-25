@@ -1,0 +1,50 @@
+<%- include("partials/_header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/task/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Title Task" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" rows="10" placeholder="Description Taks"
+                                class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% tasks.forEach((task,index) => { %>
+                        <tr>
+                            <td> <%= ++index %>  </td>
+                            <td> <%= task.title %>  </td>
+                            <td> <%= task.description %>  </td>
+                            <td>
+                                <a href="/turn/<%= task.id %> " class="btn <%= task.status?'btn-success':'btn-dark'%> ">Done</a>
+                                <a href="/task/delete/<%= task.id %>" class="btn btn-danger">Delete</a>
+                                <a href="/task/edit/<%= task.id %>" class="btn btn-info">Edit</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("partials/_footer") %>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-ng-eb86a": {
+      "hosting": {
+        "ANGULAR9-FIREBASE-BOOTSTRAP4": [
+          "login-ng-eb86a"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "ANGULAR9-FIREBASE-BOOTSTRAP4",
+      "public": "dist/ANGULAR9-FIREBASE-BOOTSTRAP4",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

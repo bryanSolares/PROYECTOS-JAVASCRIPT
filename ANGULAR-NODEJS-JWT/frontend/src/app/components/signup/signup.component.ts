@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     this.authService.signUp(this.user).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(["/private"]);
+        this.router.navigate(["/signin"]);
       },
       (error) => console.error(error)
     );

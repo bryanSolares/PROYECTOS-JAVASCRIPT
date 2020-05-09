@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
       (response) => {
         console.log(response);
         localStorage.setItem('token', response.token);
-        this.router.navigate(["/private"]);
+        this.router.navigate(["/signin"]);
       },
       (error) => console.error(error)
     );

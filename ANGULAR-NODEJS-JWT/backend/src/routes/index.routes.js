@@ -31,11 +31,23 @@ router.post("/signin",async(req,res)=>{
 });
 
 router.get("/tasks",async(req,res)=>{
-    res.status(200).json();
+    res.status(200).json([
+        {_id:1,name:"Tarea 1",description:"Descripcion de la Tarea 1" },
+        {_id:2,name:"Tarea 2",description:"Descripcion de la Tarea 2" },
+        {_id:3,name:"Tarea 3",description:"Descripcion de la Tarea 3" },
+        {_id:4,name:"Tarea 4",description:"Descripcion de la Tarea 4" },
+        {_id:5,name:"Tarea 5",description:"Descripcion de la Tarea 5" }
+    ]);
 });
 
 router.get("/private/tasks", verifiToken, async(req,res)=>{
-    res.status(200).json();
+    res.status(200).json([
+        {_id:1,name:"Tarea 1 privada",description:"Descripcion de la Tarea 1 privada" },
+        {_id:2,name:"Tarea 2 privada",description:"Descripcion de la Tarea 2 privada" },
+        {_id:3,name:"Tarea 3 privada",description:"Descripcion de la Tarea 3 privada" },
+        {_id:4,name:"Tarea 4 privada",description:"Descripcion de la Tarea 4 privada" },
+        {_id:5,name:"Tarea 5 privada",description:"Descripcion de la Tarea 5 privada" }
+    ]);
 });
 
 

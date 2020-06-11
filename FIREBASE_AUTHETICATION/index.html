@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIREBASE AUTH EXAMPLE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">FIREBASE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signInModal">SignIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">SingUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--MAIN CONTENT-->
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <ul class="list-group posts">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">SIGN UP</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signUpForm">
+                        <div class="form-group">
+                            <input type="email" name="signup-email" id="signup-email" class="form-control"
+                                placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="signup-password" id="signup-password" class="form-control"
+                                placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">SignUp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">SIGN IN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signInForm">
+                        <div class="form-group">
+                            <input type="email" name="signin-email" id="signin-email" class="form-control"
+                                placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="signin-password" id="signin-password" class="form-control"
+                                placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">SignIn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDd_OamZLdmGhAX60KR9cMc9fDSnrTJTrI",
+            authDomain: "fb-tutorial-853d4.firebaseapp.com",
+            databaseURL: "https://fb-tutorial-853d4.firebaseio.com",
+            projectId: "fb-tutorial-853d4",
+            storageBucket: "fb-tutorial-853d4.appspot.com",
+            messagingSenderId: "594303898430",
+            appId: "1:594303898430:web:7c9652be170e44ea16126f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const firestore = firebase.firestore();
+        const auth = firebase.auth();
+        
+    </script>
+
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
